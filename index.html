@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Filter</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="images/magnifying-glass.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1>Search For Your File</h1>
+            <div class="search-contain">
+                <img src="images/magnifying-glass.svg" alt="searchbutton" id="search-btn">
+                <input type="text" id="search" placeholder="">
+                <p id="tip">Hit enter to search</p>
+            </div>
+    </div>
+
+    <footer>
+        <a href="#" id="adobelink">Adobe Portfolio</a>
+    </footer>
+    
+    <script>
+        const searchBtn = document.getElementById('search-btn');
+        const search = document.getElementById('search');
+        const tip = document.getElementById('tip');
+
+        var i = 0;
+        var message = 'what file do you need?';
+        var speed = 100;
+
+        searchBtn.addEventListener('click', () => {
+            search.style.width = '80%';
+            search.style.paddingLeft = '60px';
+            search.style.cursor = 'text';
+            search.focus();
+
+        function typeWriter() {
+            if (i < message.length) {
+                msg = search.getAttribute('placeholder') + message.charAt(i);
+                search.setAttribute('placeholder', msg);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        typeWriter();
+    })
+    search.addEventListener('keydown', () => {
+            tip.style.visibility = 'visible';
+            tip.style.opacity = '1';
+    })
+    </script>
+</body>
+</html>
